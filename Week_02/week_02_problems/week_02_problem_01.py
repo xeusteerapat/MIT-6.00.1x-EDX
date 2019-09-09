@@ -1,16 +1,14 @@
-def pay_dept(b, a, m):
-    unpaid_b = 0
-    interest = 0
-    minimum_paid = 0
-    month = 0
-    while month < 13:
-        month += 1
-        minimum_paid = m * b
-        unpaid_b = b - minimum_paid
-        interest = (a / 12) * b
-        b = unpaid_b + interest
-        print('Month ', month, 'Remaining balance is', b)
-    return b
+balance = 42
+annualInterestRate = 0.2
+monthlyPaymentRate = 0.04
+month = 0
+while month < 12:
+    month += 1
+    minimum_paid = monthlyPaymentRate * balance
+    unpaid_b = balance - minimum_paid
+    interest = (annualInterestRate / 12) * unpaid_b
+    balance = unpaid_b + interest
+    balance = round(balance, 2)
+    print('Month ', month, 'Remaining balance is', balance)
 
-
-print(pay_dept(42, 0.2, 0.04))
+print('Remaining Balance:', balance)
