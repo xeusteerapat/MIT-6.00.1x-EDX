@@ -1,3 +1,6 @@
+import string
+
+
 def isWordGuessed(secretWord, lettersGuessed):
     '''
     secretWord: string, the word the user is guessing
@@ -17,6 +20,34 @@ def isWordGuessed(secretWord, lettersGuessed):
 
 
 secretWord = 'apple'
-lettersGuessed = ['a', 'e', 'i', 'k', 'p', 'r', 's']
-print(isWordGuessed('durian', ['h', 'a', 'c',
-                               'd', 'i', 'm', 'n', 'r', 't', 'u']))
+lettersGuessed = ['e', 'i', 'k', 'p', 'r', 's']
+print(isWordGuessed(secretWord, lettersGuessed))
+
+
+def getGuessedWord(secretWord, lettersGuessed):
+    temp = []
+    for i in secretWord:
+        if i not in lettersGuessed:
+            temp.append('_ ')
+        else:
+            temp.append(i)
+    answer = ''.join(temp)
+    return answer
+
+
+# print(getGuessedWord(secretWord, lettersGuessed)
+#       )
+
+
+def getAvailableLetters(lettersGuessed):
+    all_str = string.ascii_lowercase
+    temp_list = []
+    for i in all_str:
+        if i not in lettersGuessed:
+            temp_list.append(i)
+    answer = ''.join(temp_list)
+    return answer
+
+
+# print(
+#     getAvailableLetters(lettersGuessed))
