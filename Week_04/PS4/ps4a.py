@@ -212,6 +212,10 @@ def calculateHandlen(hand):
     returns: integer
     """
     # TO DO... <-- Remove this comment when you code this function
+    temp = []
+    for i in hand:
+        temp.append(hand[i])
+    return sum(temp)
 
 
 def playHand(hand, wordList, n):

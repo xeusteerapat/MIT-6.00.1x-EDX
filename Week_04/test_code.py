@@ -47,28 +47,7 @@ def getFrequencyDict(sequence):
 
 chk = {'h': 1, 't': 2, 'u': 2, 'o': 2, 'a': 1, 'y': 1, 'c': 2, 'z': 1}
 word = 'chayote'
-a = getFrequencyDict(word)
-print(chk)
-print(a)
-
-for i in a:
-    # print(i)
-    if i in chk:
-        if chk[i] >= a[i]:
-            print('yes')
-        else:
-            print('n')
-    else:
-        print('no')
-
-
-# temp_hand = chk.copy()
-# for i in word:
-#     if i in chk:
-#         temp_hand[i] -= 1
-# ans = [x for x in temp_hand.values()]
-# # for j in temp_hand.values():
-# #     ans.append(j)
-# print(ans)
-
-# a =
+temp = []
+for i in chk:
+    temp.append(chk[i])
+print(sum(temp))
