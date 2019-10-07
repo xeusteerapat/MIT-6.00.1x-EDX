@@ -304,15 +304,23 @@ def playGame(wordList):
     """
     # TO DO ... <-- Remove this comment when you code this function
     # <-- Remove this line when you code the function
-    status = input(
-        "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
-    if status == 'r' and hand is None:
-        print('You have not played a hand yet. Please play a new hand first!')
-    elif status == 'n':
-        playHand(dealHand(HAND_SIZE), wordList, HAND_SIZE)
-    elif status == 'r':
-        playHand(updateHand(hand, word), wordList, calculateHandlen(hand))
-    print("playGame not yet implemented.")
+
+    while True:
+        status = input(
+            "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        if status == 'r' and hand is None:
+            print('You have not played a hand yet. Please play a new hand first!')
+        elif status == 'n':
+            hand = dealHand(HAND_SIZE)
+            store_hand = hand
+            playHand(hand, wordList, HAND_SIZE)
+        elif status == 'r':
+            playHand(store_hand, wordList, HAND_SIZE)
+        elif status == 'e':
+            break
+        else:
+            print('Invalid command.')
+        print("playGame not yet implemented.")
 
 
 #
