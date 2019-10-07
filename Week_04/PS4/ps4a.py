@@ -243,32 +243,47 @@ def playHand(hand, wordList, n):
     # BEGIN PSEUDOCODE <-- Remove this comment when you code this function;
     # do your coding within the pseudocode (leaving those comments in-place!)
     # Keep track of the total score
-
+    total_score = 0
     # As long as there are still letters left in the hand:
+    while calculateHandlen(hand) > 0:
+        # Display the hand
+        print("Current Hand:", end="")
+        print(displayHand(hand))
+        # Ask user for input
+        input_word = input(
+            "Enter word, or a \".\" to indicate that you are finished: ")
+        # If the input is a single period:
+        if input_word == '.':
+            # End the game (break out of the loop)
+            break
+            print("Goodbye! Total score: " + str(total_score) + " points.")
 
-    # Display the hand
+        # Otherwise (the input is not a single period):
+        else:
+            # If the word is not valid:
+            if not isValidWord(input_word, hand, wordList):
+                # Reject invalid word
+                # (print a message followed by a blank line)
+                print("Invalid word, please try again.")
+            # Otherwise (the word is valid):
+            else:
+                # Tell the user how many points the word earned,
+                # and the updated total score, in one line followed
+                # by a blank line
+                current_score = getWordScore(input_word, n)
+                total_score += current_score
+                print('"' + str(input_word) + '"' + ' earned ' +
+                      str(current_score) + " points" + " Total: " +
+                      str(total_score) + " points")
+                # Update the hand
+                hand = updateHand(hand, input_word)
+                print()
 
-    # Ask user for input
-
-    # If the input is a single period:
-
-    # End the game (break out of the loop)
-
-    # Otherwise (the input is not a single period):
-
-    # If the word is not valid:
-
-    # Reject invalid word (print a message followed by a blank line)
-
-    # Otherwise (the word is valid):
-
-    # Tell the user how many points the word earned, and the updated
-    # total score, in one line followed by a blank line
-
-    # Update the hand
-
-    # Game is over (user entered a '.' or ran out of letters), so tell user
-    # the total score
+    # Game is over (user entered a '.' or ran out of letters),
+    # so tell user the total score
+        if calculateHandlen(hand) == 0:
+            print("Run out of letters. Total score: " +
+                  str(total_score) + ' points.')
 
 
 #
@@ -289,6 +304,14 @@ def playGame(wordList):
     """
     # TO DO ... <-- Remove this comment when you code this function
     # <-- Remove this line when you code the function
+    status = input(
+        "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+    if status == 'r' and hand is None:
+        print('You have not played a hand yet. Please play a new hand first!')
+    elif status == 'n':
+        playHand(dealHand(HAND_SIZE), wordList, HAND_SIZE)
+    elif status == 'r':
+        playHand(updateHand(hand, word), wordList, calculateHandlen(hand))
     print("playGame not yet implemented.")
 
 
