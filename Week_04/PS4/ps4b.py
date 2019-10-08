@@ -76,7 +76,7 @@ def compPlayHand(hand, wordList, n):
         # computer's word
         word = compChooseWord(hand, wordList, n)
         # If the input is a single period:
-        if word == None:
+        if word is None:  # default code from MIT: if word == None
             # End the game (break out of the loop)
             break
 
@@ -137,13 +137,15 @@ def playGame(wordList):
     hand = 0
     while True:
         status = input(
-            "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+            "Enter n to deal a new hand, r to replay the last hand, \
+            or e to end game: ")
         if status == 'e':
             break
         elif status == 'n':
             while True:
                 player = input(
-                    "Enter u to have yourself play, c to have the computer play: ")
+                    "Enter u to have yourself play, c to have the \
+                    computer play: ")
                 if player == 'u':
                     hand = dealHand(HAND_SIZE)
                     playHand(hand, wordList, HAND_SIZE)
@@ -155,7 +157,8 @@ def playGame(wordList):
                 elif player is not 'c' or 'u':
                     print('Invalid command.')
         elif status == 'r' and hand == 0:
-            print("You have not played a hand yet. Please play a new hand first!")
+            print("You have not played a hand yet. \
+            Please play a new hand first!")
         elif status == 'r':
             player = input(
                 "Enter u to have yourself play, c to have the computer play: ")
@@ -168,9 +171,8 @@ def playGame(wordList):
         else:
             print('Invalid command.')
 
-            #
-            # Build data structures used for entire session and play game
-            #
+
+# Build data structures used for entire session and play game
 if __name__ == '__main__':
     wordList = loadWords()
     playGame(wordList)

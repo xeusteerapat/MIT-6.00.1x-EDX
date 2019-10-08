@@ -307,9 +307,11 @@ def playGame(wordList):
     hand = 0
     while True:
         status = input(
-            "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+            "Enter n to deal a new hand, r to replay the last hand, \
+            or e to end game: ")
         if status == 'r' and hand == 0:
-            print('You have not played a hand yet. Please play a new hand first!')
+            print('You have not played a hand yet. Please play \
+            a new hand first!')
         elif status == 'n':
             hand = dealHand(HAND_SIZE)
             store_hand = hand
