@@ -304,11 +304,11 @@ def playGame(wordList):
     """
     # TO DO ... <-- Remove this comment when you code this function
     # <-- Remove this line when you code the function
-
+    hand = 0
     while True:
         status = input(
             "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
-        if status == 'r' and hand is None:
+        if status == 'r' and hand == 0:
             print('You have not played a hand yet. Please play a new hand first!')
         elif status == 'n':
             hand = dealHand(HAND_SIZE)
@@ -320,7 +320,6 @@ def playGame(wordList):
             break
         else:
             print('Invalid command.')
-        print("playGame not yet implemented.")
 
 
 #
