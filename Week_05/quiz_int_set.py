@@ -30,7 +30,7 @@ class intSet(object):
         self.vals.sort()
         return '{' + ','.join([str(e) for e in self.vals]) + '}'
 
-    def len(self):
+    def __len__(self):
         elements = 0
         for e in self.vals:
             elements += 1
