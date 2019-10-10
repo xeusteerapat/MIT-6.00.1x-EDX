@@ -20,5 +20,5 @@ L3 = [5, 6, 7]
 L4 = [5, 6, 7, 0]
 
 print(get_ratios(L1, L2))
-# print(get_ratios(L1, L3))  # this case will an error with our message
+print(get_ratios(L1, L3))  # this case will an error with our message
 print(get_ratios(L1, L4))  # last element is nan
