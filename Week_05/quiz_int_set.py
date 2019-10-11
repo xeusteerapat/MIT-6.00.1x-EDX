@@ -25,6 +25,14 @@ class intSet(object):
         except:
             raise ValueError(str(e) + ' not found')
 
+    def intersect(self, other):
+        intersect_set = []
+        for i in self.vals:
+            for j in other.vals:
+                if j == i:
+                    intersect_set.append(i)
+        return '{' + ','.join([str(e) for e in intersect_set]) + '}'
+
     def __str__(self):
         """Returns a string representation of self"""
         self.vals.sort()
