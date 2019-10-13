@@ -41,7 +41,8 @@ class Grades(object):
         if not self.is_sorted:
             self.students.sort()
             self.is_sorted = True
-        return self.students[:]
+        for s in self.students:
+            yield s
 
 
 def grade_report(course):
