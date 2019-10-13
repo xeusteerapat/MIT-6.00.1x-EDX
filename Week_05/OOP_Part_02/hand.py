@@ -84,7 +84,19 @@ class Hand(object):
         returns: Boolean (if the word was or was not made)
         """
         # Your code here
-        raise NotImplementedError()
+        temp_hand = self.hand
+        check = []
+        for i in word:
+            if i in temp_hand:
+                check.append(i)
+
+        if len(word) == len(check):
+            for i in word:
+                if i in temp_hand:
+                    temp_hand[i] -= 1
+            return True
+        else:
+            return False
 
 
 myHand = Hand(7)
