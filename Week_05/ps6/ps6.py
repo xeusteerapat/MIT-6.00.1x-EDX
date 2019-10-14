@@ -246,10 +246,17 @@ class CiphertextMessage(Message):
         '''
         input_text = self.message_text
         split_text = input_text.split(' ')
-        if split_text in self.valid_words:
-            return True
-        else:
-            return False
+        s = 0
+        test_text = self.apply_shift(s)
+        for i in self.valid_words:
+            s -= 1
+            if self.apply_shift(s) not in self.valid_words:
+                continue
+            else:
+                continue
+                return 26 + s, self.apply_shift(s)
+        test_text = self.apply_shift(s)
+        return 26 + s, test_text
 
 
 # Example test case (PlaintextMessage)
