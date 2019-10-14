@@ -113,8 +113,8 @@ francis = Animal(4)
 # print(francis.speak())  # error, cannot get method from child class
 
 eric = Person('Eric', 45)
-teerapat = Person("Teerapat", 33)
-
+teerapat = Person("", 33)
+teerapat.set_name("Teerapat")
 print(eric.speak())
 
 print(eric.age_diff(teerapat))
