@@ -244,19 +244,20 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        input_text = self.message_text
-        split_text = input_text.split(' ')
-        s = 0
-        test_text = self.apply_shift(s)
-        for i in self.valid_words:
-            s -= 1
-            if self.apply_shift(s) not in self.valid_words:
-                continue
-            else:
-                continue
-                return 26 + s, self.apply_shift(s)
-        test_text = self.apply_shift(s)
-        return 26 + s, test_text
+        max_words = 0
+        best_shift = 0
+
+        for shift in range(26):
+            to_decrypt = (self.apply_shift(shift)).split(" ")
+            words_count = 0
+            for word in to_decrypt:
+                if is_word(self.valid_words, word):
+                    words_count += 1
+            if words_count > max_words:
+                max_words = words_count
+                best_shift = shift
+        decrypted = "".join(self.apply_shift(best_shift))
+        return best_shift, decrypted
 
 
 # Example test case (PlaintextMessage)
