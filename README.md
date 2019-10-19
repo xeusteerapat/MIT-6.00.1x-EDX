@@ -6,3 +6,4 @@
 4. Good Programming Practices
 5. Object Oriented Programming
 6. Computational Complexity
+7. Plotting
